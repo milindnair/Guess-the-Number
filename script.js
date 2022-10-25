@@ -8,9 +8,38 @@ const displayMessage = function (message) {
   document.querySelector('.message').textContent = message;
 };
 
+const celebration = () => {
+
+  const start = () => {
+    setTimeout(function() {
+        confetti.start()
+    }, 1000); // 1000 is time that after 1 second start the confetti ( 1000 = 1 sec)
+  };
+  
+  //  Stop
+  
+  const stop = () => {
+    setTimeout(function() {
+        confetti.stop()
+    }, 5000); // 5000 is time that after 5 second stop the confetti ( 5000 = 5 sec)
+  };
+  
+  start();
+  stop();
+  };
+  
+
 document.querySelector('.check').addEventListener('click', function () {
   const guess = Number(document.querySelector('.guess').value);
   console.log(guess, typeof guess);
+  
+// var input = document.getElementsByClassName("guess");
+//   input.addEventListener("keypress", function(event) {
+//     if (event.key === "Enter") {
+//       event.preventDefault();
+//       document.getElementById("button").click();
+//     }
+//   });
 
   // When there is no input
   if (!guess) {
@@ -20,9 +49,10 @@ document.querySelector('.check').addEventListener('click', function () {
     // When player wins
   } else if (guess === secretNumber) {
     // document.querySelector('.message').textContent = '🎉 Correct Number!';
-    displayMessage('🎉 Correct Number!');
-    document.querySelector('.number').textContent = secretNumber;
 
+    displayMessage('🎉 Correct Number!');
+    celebration();
+    document.querySelector('.number').textContent = secretNumber;
     document.querySelector('body').style.backgroundColor = '#2e852e'; 
     buttons[0].style.backgroundColor= '#60b347';
     buttons[0].style.boxShadow='6px 6px 9px #123512, -6px -6px 9px #4ad54a;';
@@ -66,3 +96,4 @@ document.querySelector('.again').addEventListener('click', function () {
   document.querySelector('body').style.backgroundColor = '#222';
   document.querySelector('.number').style.width = '15rem';
 });
+
