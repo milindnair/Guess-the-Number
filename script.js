@@ -1,5 +1,5 @@
 'use strict';
-let secretNumber = Math.trunc(Math.random() * 20) + 1;
+let secretNumber = Math.trunc(Math.random() * 20) + 2;
 let score = 20;
 let highscore = 0;
 const buttons = document.getElementsByClassName('btn');
@@ -53,9 +53,9 @@ document.querySelector('.check').addEventListener('click', function () {
     displayMessage('🎉 Correct Number!');
     celebration();
     document.querySelector('.number').textContent = secretNumber;
-    document.querySelector('body').style.backgroundColor = '#2e852e'; 
+    document.querySelector('body').style.backgroundColor = '#1e631e'; 
     buttons[0].style.backgroundColor= '#60b347';
-    buttons[0].style.boxShadow='6px 6px 9px #123512, -6px -6px 9px #4ad54a;';
+    // buttons[0].style.boxShadow=' 6px 6px 6px #fff, -6px -6px 6px #4ad54a;';
     buttons[0].style.Color = '#222';
     buttons[1].style.backgroundColor= '#60b347';
     buttons[1].style.boxShadow='6px 6px 9px #123512, -6px -6px 9px #4ad54a;';
@@ -67,12 +67,13 @@ document.querySelector('.check').addEventListener('click', function () {
       document.querySelector('.highscore').textContent = highscore;
     }
 
+
     // When guess is wrong
   } else if (guess !== secretNumber) {
     if (score > 1) {
       // document.querySelector('.message').textContent =
       // guess > secretNumber ? '📈 Too high!' : '📉 Too low!';
-      displayMessage(guess > secretNumber ? '📈 Too high!' : '📉 Too low!');
+      displayMessage(guess > secretNumber ? '📉 Try going lower!' : '📈 Try going higher!');
       score--;
       document.querySelector('.score').textContent = score;
     } else {
